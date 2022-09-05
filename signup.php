@@ -39,7 +39,27 @@ if(isset($_POST['signup'])){
            $stmt->close();
            $conn->close();
           }
-
 }
+
+if(isset($_POST['signin'])){
+  $conn = new mysqli($host, $dbusername, $dbpassword, $dbname);
+  $email = $_POST['email'];
+  $pass = $_POST['password'];
+  $sql = "SELECT * FROM users WHERE email='".$email."'";
+  $result = $conn->query($sql);
+
+  if ($result->num_rows > 0) {
+  while($row = $result->fetch_assoc()) {
+    echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
+    if($row['password']== $pass){
+      // $_SESSION['id'] = $row['id'];
+      header("Location: /snscolors/index.html"); 
+      exit();
+    }
+  }
+}
+}
+
+
 
 ?>
