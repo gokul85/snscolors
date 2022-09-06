@@ -36,7 +36,6 @@ if(isset($_POST['signup'])){
             header("Location: index.php?message=Registration Successfull");
            } else {
             echo "Someone already register using this email";
-            header("Location: index.php");
            }
            $stmt->close();
            $conn->close();
@@ -55,7 +54,7 @@ if(isset($_POST['signin'])){
     echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
     if($row['password']== $pass){
       // $_SESSION['id'] = $row['id'];
-      header("Location: /snscolors/index.php"); 
+      header("Location: /snscolors/index.php?message=Login Successfully Completed"); 
       exit();
     }
   }
