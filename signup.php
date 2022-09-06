@@ -36,6 +36,7 @@ if(isset($_POST['signup'])){
             header("Location: snscolors/index.html");
            } else {
             echo "Someone already register using this email";
+            header("Location: snscolors/index.html");
            }
            $stmt->close();
            $conn->close();
