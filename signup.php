@@ -33,8 +33,10 @@ if(isset($_POST['signup'])){
             $stmt->bind_param("sss",$name,$email,$pass);
             $stmt->execute();
             echo "New record inserted sucessfully";
+            header("Location: snscolors/index.html");
            } else {
             echo "Someone already register using this email";
+            header("Location: snscolors/index.html");
            }
            $stmt->close();
            $conn->close();
