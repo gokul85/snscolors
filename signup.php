@@ -32,11 +32,11 @@ if(isset($_POST['signup'])){
             $stmt = $conn->prepare($INSERT);
             $stmt->bind_param("sss",$name,$email,$pass);
             $stmt->execute();
-            echo "New record inserted sucessfully";
-            header("Location: snscolors/index.html");
+            $_SESSION['email'] = $email;
+            header("Location: index.php?message=Registration Successfull");
            } else {
             echo "Someone already register using this email";
-            header("Location: snscolors/index.html");
+            header("Location: index.php");
            }
            $stmt->close();
            $conn->close();
@@ -55,7 +55,7 @@ if(isset($_POST['signin'])){
     echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
     if($row['password']== $pass){
       // $_SESSION['id'] = $row['id'];
-      header("Location: /snscolors/index.html"); 
+      header("Location: /snscolors/index.php"); 
       exit();
     }
   }
